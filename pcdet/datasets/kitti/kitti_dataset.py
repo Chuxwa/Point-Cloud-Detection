@@ -65,7 +65,10 @@ class KittiDataset(DatasetTemplate):
         return np.fromfile(str(lidar_file), dtype=np.float32).reshape(-1, 4)
 
     def get_image_shape(self, idx):
+        import os
         img_file = self.root_split_path / 'image_2' / ('%s.png' % idx)
+        if not os.path.exists(img_file):
+            print(img_file)
         assert img_file.exists()
         return np.array(io.imread(img_file).shape[:2], dtype=np.int32)
 
@@ -431,6 +434,7 @@ if __name__ == '__main__':
         from easydict import EasyDict
         dataset_cfg = EasyDict(yaml.load(open(sys.argv[2])))
         ROOT_DIR = (Path(__file__).resolve().parent / '../../../').resolve()
+        ROOT_DIR = (Path("/home/haya/LocalBlob/others/v-chuxwa/data/kitti").resolve().parent / '../').resolve()
         create_kitti_infos(
             dataset_cfg=dataset_cfg,
             class_names=['Car', 'Pedestrian', 'Cyclist'],

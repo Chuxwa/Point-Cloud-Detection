@@ -48,6 +48,14 @@ class Detector3DTemplate(nn.Module):
         return model_info_dict['module_list']
 
     def build_vfe(self, model_info_dict):
+        """voxelization
+
+        Args:
+            model_info_dict (dict): num_rawpoint_features, point_cloud_range, voxel_size
+
+        Returns:
+            tuples: num_point_features, vfe_module
+        """
         if self.model_cfg.get('VFE', None) is None:
             return None, model_info_dict
 
@@ -62,6 +70,14 @@ class Detector3DTemplate(nn.Module):
         return vfe_module, model_info_dict
 
     def build_backbone_3d(self, model_info_dict):
+        """3D Sparse Conv
+
+        Args:
+            model_info_dict (dict): num_point_features, grid_size, voxel_size, point_cloud_range
+
+        Returns:
+            tuples: num_point_features, vfe_module
+        """
         if self.model_cfg.get('BACKBONE_3D', None) is None:
             return None, model_info_dict
 
@@ -77,6 +93,14 @@ class Detector3DTemplate(nn.Module):
         return backbone_3d_module, model_info_dict
 
     def build_map_to_bev_module(self, model_info_dict):
+        """map voxel grid to brid view
+
+        Args:
+            model_info_dict (dict): size of the brid view map
+
+        Returns:
+            tuples: num_bev_features, map_to_bev_module
+        """
         if self.model_cfg.get('MAP_TO_BEV', None) is None:
             return None, model_info_dict
 

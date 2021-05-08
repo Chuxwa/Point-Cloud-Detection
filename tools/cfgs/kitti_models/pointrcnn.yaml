@@ -1,7 +1,7 @@
 CLASS_NAMES: ['Car', 'Pedestrian', 'Cyclist']
 
 DATA_CONFIG:
-    _BASE_CONFIG_: cfgs/dataset_configs/kitti_dataset.yaml
+    _BASE_CONFIG_: tools/cfgs/dataset_configs/kitti_dataset.yaml
 
     DATA_PROCESSOR:
         -   NAME: mask_points_and_boxes_outside_range
@@ -66,7 +66,7 @@ MODEL:
 
         ROI_POINT_POOL:
             POOL_EXTRA_WIDTH: [0.0, 0.0, 0.0]
-            NUM_SAMPLED_POINTS: 512
+            NUM_SAMPLED_POINTS: 256
             DEPTH_NORMALIZER: 70.0
 
         XYZ_UP_LAYER: [128, 128]

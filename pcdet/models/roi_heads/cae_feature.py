@@ -19,7 +19,7 @@ class SpareNetEncode(nn.Module):
     ):
         super(SpareNetEncode, self).__init__()
         self.feat_extractor = EdgeConvResFeat(
-            use_SElayer=use_SElayer, k=1, output_size=hide_size, hide_size=2048
+            use_SElayer=use_SElayer, k=4, output_size=hide_size, hide_size=2048
         )
         self.linear = nn.Linear(hide_size, bottleneck_size)
         self.bn = nn.BatchNorm1d(bottleneck_size)

@@ -434,10 +434,10 @@ if __name__ == '__main__':
         from easydict import EasyDict
         dataset_cfg = EasyDict(yaml.load(open(sys.argv[2])))
         ROOT_DIR = (Path(__file__).resolve().parent / '../../../').resolve()
-        ROOT_DIR = (Path("/home/haya/LocalBlob/others/v-chuxwa/data/kitti").resolve().parent / '../').resolve()
+        ROOT_DIR = (Path("/data/Dataset/PCDdataset/KITTI").resolve().parent / '../').resolve()
         create_kitti_infos(
             dataset_cfg=dataset_cfg,
             class_names=['Car', 'Pedestrian', 'Cyclist'],
-            data_path=ROOT_DIR / 'data' / 'kitti',
-            save_path=ROOT_DIR / 'data' / 'kitti'
+            data_path=ROOT_DIR / 'PCDdataset' / 'KITTI',
+            save_path=ROOT_DIR / 'PCDdataset' / 'KITTI'
         )

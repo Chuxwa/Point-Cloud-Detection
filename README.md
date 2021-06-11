@@ -75,7 +75,6 @@ Contributions are also welcomed.
   <img src="docs/multiple_models_demo.png" width="95%">
 </p>
 
-
 ### Currently Supported Features
 
 - [x] Support both one-stage and two-stage 3D object detection frameworks
